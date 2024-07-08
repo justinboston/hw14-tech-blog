@@ -4,6 +4,10 @@ async function newFormHandler(event) {
   const title = document.querySelector('input[name="post-title"]').value;
   const content = document.querySelector('input[name="content"]').value;
 
+  if (!title || !content) {
+    alert('Please fill in both title and content fields');
+  }
+
   const response = await fetch(`/api/posts`, {
     method: 'POST',
     body: JSON.stringify({
@@ -21,5 +25,5 @@ async function newFormHandler(event) {
     alert(response.statusText);
   }
 };
-
+console.log(document.querySelector('#new-post-form'));
 document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);

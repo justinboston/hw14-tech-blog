@@ -8,10 +8,7 @@ router.get('/', withAuth, (req, res) => {
                 user_id: req.session.user_id
             },
             attributes: [
-                'id',
-                'title',
-                'content',
-                'created_at'
+                'id', 'title','content','created_at'
             ],
             include: [{
                     model: Comment,
@@ -41,10 +38,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             where: {
                 id: req.params.id
             },
-            attributes: ['id',
-                'title',
-                'content',
-                'created_at'
+            attributes: ['id','title','content','created_at'
             ],
             include: [{
                     model: User,
@@ -67,7 +61,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             }
 
             const post = dbPostData.get({ plain: true });
-            res.render('edit-post', { post, loggedIn: true });
+            res.render('edit_post', { post, loggedIn: true });
         })
         .catch(err => {
             console.log(err);
@@ -75,7 +69,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         });
 })
 router.get('/new', (req, res) => {
-    res.render('new-post');
+    res.render('new_post');
 });
 
 
